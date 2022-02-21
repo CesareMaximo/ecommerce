@@ -202,6 +202,28 @@ BEGIN
 UPDATE Ventas set Estado =0 where IdVenta = @idventa
 END
 
+GO
+create PROCEDURE SP_VentasxUsuario
+(
+	@idusuario bigint
+)
+as 
+BEGIN
+
+select 
+		v.Fecha,
+		v.Total,
+		v.EstadoEnvio,
+		v.EstadoRetiro,
+		v.IdVenta,
+		v.DireccionEnvio,
+		v.DescripcionVenta,
+		v.Estado
+
+from Ventas as v where IdUsuario = @idusuario
+
+END
+
 --///////////////////// TERMINA VENTA ////////////////////////////
 
 --//////////// EMPIEZA DETALLE VENTA ///////////////////////////
@@ -412,22 +434,23 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE SP_ListarUsuarios
+alter PROCEDURE SP_ListarUsuarios
 AS
 BEGIN
 
 SELECT U.Usuario
       --,U.Clave
-      --,U.Estado
+      ,U.Estado
       --,U.TipoUsuario
 	  ,U.Nombre
       ,U.Apellido
       ,U.Documento
       ,U.Domicilio
-      ,U.Celular
+      ,U.Celular,
+	  u.IdUsuario
   FROM Usuarios U 
   WHERE U.Estado = 1 AND U.TipoUsuario = 2;
-END
+END 
 GO
 
 -- DROP PROCEDURE SP_ListarUsuarios;
@@ -562,6 +585,44 @@ END
 
 --/////////// TERMINA CONTACTO ///////////
 
+--////////// EMPIEZA ADMIN //////////
+GO
+create procedure SP_ListaAdmin
+AS
+BEGIN
 
-select * from Contacto
+select NombreComercio,
+		Email,
+		Estado,
+		IdAdminCommerce
+
+
+
+from AdminCommerce
+END
+
+go
+create procedure SP_EliminarAdmin
+(
+	@idadmin bigint
+)
+AS
+BEGIN
+UPDATE AdminCommerce set Estado = 0 where IdAdminCommerce = @idadmin
+
+END
+
+go
+create procedure SP_AltaAdmin
+(
+	@idadmin bigint
+)
+AS
+BEGIN
+UPDATE AdminCommerce set Estado = 1 where IdAdminCommerce = @idadmin
+
+END
+
+
+--////////// TERMINA ADMIN //////////
 

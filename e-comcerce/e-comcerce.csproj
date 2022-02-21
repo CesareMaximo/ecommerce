@@ -106,10 +106,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AdminClientes.aspx" />
+    <Content Include="Administradores.aspx" />
+    <Content Include="AgregarAdmin.aspx" />
     <Content Include="AgregarCategoria.aspx" />
+    <Content Include="AltaAdmin.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CategoriaAdmin.aspx" />
     <Content Include="CategoriaDeBaja.aspx" />
+    <Content Include="ComprasCliente.aspx" />
     <Content Include="ConfirmarEliminacion.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -119,7 +124,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Despacho.aspx" />
+    <Content Include="DetalleVentaCliente.aspx" />
     <Content Include="DetalleVentaRegistro.aspx" />
+    <Content Include="EliminarAdmin.aspx" />
     <Content Include="EliminarCategoria.aspx" />
     <Content Include="EliminarProducto.aspx" />
     <Content Include="Error.aspx" />
@@ -142,6 +149,7 @@
     <Content Include="ListaEliminar.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="MisCompras.aspx" />
     <Content Include="ModificarProducto.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="Productos.aspx" />
@@ -186,12 +194,40 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminClientes.aspx.cs">
+      <DependentUpon>AdminClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminClientes.aspx.designer.cs">
+      <DependentUpon>AdminClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administradores.aspx.cs">
+      <DependentUpon>Administradores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administradores.aspx.designer.cs">
+      <DependentUpon>Administradores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarAdmin.aspx.cs">
+      <DependentUpon>AgregarAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarAdmin.aspx.designer.cs">
+      <DependentUpon>AgregarAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarCategoria.aspx.cs">
       <DependentUpon>AgregarCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgregarCategoria.aspx.designer.cs">
       <DependentUpon>AgregarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaAdmin.aspx.cs">
+      <DependentUpon>AltaAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaAdmin.aspx.designer.cs">
+      <DependentUpon>AltaAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -223,6 +259,13 @@
     <Compile Include="CategoriaDeBaja.aspx.designer.cs">
       <DependentUpon>CategoriaDeBaja.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ComprasCliente.aspx.cs">
+      <DependentUpon>ComprasCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ComprasCliente.aspx.designer.cs">
+      <DependentUpon>ComprasCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ConfirmarEliminacion.aspx.cs">
       <DependentUpon>ConfirmarEliminacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,12 +294,26 @@
     <Compile Include="Despacho.aspx.designer.cs">
       <DependentUpon>Despacho.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetalleVentaCliente.aspx.cs">
+      <DependentUpon>DetalleVentaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleVentaCliente.aspx.designer.cs">
+      <DependentUpon>DetalleVentaCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DetalleVentaRegistro.aspx.cs">
       <DependentUpon>DetalleVentaRegistro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DetalleVentaRegistro.aspx.designer.cs">
       <DependentUpon>DetalleVentaRegistro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarAdmin.aspx.cs">
+      <DependentUpon>EliminarAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarAdmin.aspx.designer.cs">
+      <DependentUpon>EliminarAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarCategoria.aspx.cs">
       <DependentUpon>EliminarCategoria.aspx</DependentUpon>
@@ -330,6 +387,13 @@
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisCompras.aspx.cs">
+      <DependentUpon>MisCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisCompras.aspx.designer.cs">
+      <DependentUpon>MisCompras.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarProducto.aspx.cs">
       <DependentUpon>ModificarProducto.aspx</DependentUpon>

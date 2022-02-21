@@ -72,6 +72,31 @@
         </div>
     </div>
         </tr>
+       <tr>
+        <div class="card" width="100%" style="border-radius:20px; width: 18rem;border: solid 1px black; padding: 10px; margin: 15px;  ">
+        <img style="border-radius: 20px;" src="https://adriw.com/wp-content/uploads/2019/03/Administraci%C3%B3n-23.jpg" class="card-img-top" alt="..."  width="158" height="158"  >
+        <div class="card-body">
+            <h5 class="card-title">Administradores</h5>
+            <hr />
+            <p class="card-text"> Aqui podrá agregar y eliminar administradores</p>
+           
+            <a href="Administradores.aspx"  style="border-radius:20px;" class="btn btn-success">Click Acá!</a>
+        </div>
+    </div>
+        </tr>
+
+       <tr>
+        <div class="card" width="100%" style="border-radius:20px; width: 18rem;border: solid 1px black; padding: 10px; margin: 15px;  ">
+        <img style="border-radius: 20px;" src="https://debmedia.com/blog/wp-content/uploads/2020/04/20-04-A-Flujo-de-Clientes-en-Sucursal.-C%C3%B3mo-Gestionarlo-Efectivamente-pre-1200x900.jpg" class="card-img-top" alt="..."  width="158" height="158"  >
+        <div class="card-body">
+            <h5 class="card-title">Clientes</h5>
+            <hr />
+            <p class="card-text"> Aqui podrá ver los clientes registrados y sus compras</p>
+           
+            <a href="AdminClientes.aspx"  style="border-radius:20px;" class="btn btn-success">Click Acá!</a>
+        </div>
+    </div>
+        </tr>
 
 
         </div>

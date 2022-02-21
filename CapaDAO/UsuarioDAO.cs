@@ -212,6 +212,8 @@ namespace CapaDAO
                     objUsuario.Documento = dr["Documento"].ToString();
                     objUsuario.Domicilio = dr["Domicilio"].ToString();
                     objUsuario.Celular = dr["Celular"].ToString();
+                    objUsuario.IdUsuario = Convert.ToInt32(dr["IdUsuario"].ToString());
+                    objUsuario.Estado = Convert.ToBoolean(dr["Estado"].ToString());
 
                     Lista.Add(objUsuario);
                 }

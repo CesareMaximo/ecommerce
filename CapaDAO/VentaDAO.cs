@@ -180,6 +180,51 @@ namespace CapaDAO
             }
             return lista;
         }
+        
+        public List<Ventas> listaVentaxUsuario(int idUsuario)
+        {
+            List<Ventas> lista = new List<Ventas>();
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            try
+            {
+                con = Conexion.getInstance().ConexionBD();
+                cmd = new SqlCommand("SP_VentasxUsuario", con);
+                cmd.Parameters.AddWithValue("@idusuario", idUsuario);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Ventas objVentas = new Ventas();
+                    objVentas.FechaVenta = Convert.ToDateTime(dr["Fecha"].ToString());
+                    objVentas.Total = Convert.ToDecimal(dr["Total"].ToString());
+                    objVentas.EstadoEnvio = Convert.ToBoolean(dr["EstadoEnvio"].ToString());
+                    objVentas.EstadoRetiro = Convert.ToBoolean(dr["EstadoRetiro"].ToString());
+                    objVentas.IdVenta = Convert.ToInt32(dr["IdVenta"].ToString());
+                    objVentas.DireccionEnvio = dr["DireccionEnvio"].ToString();
+                    objVentas.DescripcionVenta = dr["DescripcionVenta"].ToString();
+                    objVentas.Estado = Convert.ToBoolean(dr["Estado"].ToString());
+
+                    lista.Add(objVentas);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return lista;
+        }
 
     }
 }

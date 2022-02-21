@@ -75,5 +75,19 @@ namespace CapaNegocio
             }
         }
 
+        public List<Ventas> listaVentaxUsuario(int idUsuario)
+        {
+            try
+            {
+                return VentaDAO.getInstance().listaVentaxUsuario(idUsuario);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

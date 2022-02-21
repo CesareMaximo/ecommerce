@@ -11,7 +11,7 @@ namespace e_comcerce
 {
 
 
-    public partial class Carrito
+    public partial class MisCompras
     {
     }
 }
