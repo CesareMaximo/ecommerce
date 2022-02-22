@@ -409,6 +409,7 @@ AS
 	END
 GO
 
+
 -- DROP PROCEDURE SP_BuscarUsuarioPorEmail; 
 
 /****** Object:  StoredProcedure SP_BuscarSiExisteUsuarioPorEmail ******/
@@ -626,3 +627,4 @@ END
 
 --////////// TERMINA ADMIN //////////
 
+select * from ventas

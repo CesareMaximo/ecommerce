@@ -46,6 +46,9 @@ namespace e_comcerce
 
         protected void btnFinalizarVenta_Click(object sender, EventArgs e)
         {
+
+            Usuario objUsuario = new Usuario();
+            objUsuario = (Usuario)Session["usuario"];
             //Para Detalle de Venta
             int ID_Venta = 0;
             List<DetalleVenta> listaDetalle = new List<DetalleVenta>();
@@ -55,7 +58,7 @@ namespace e_comcerce
             Ventas objVenta = new Ventas();
 
             //  Este tiene que sacar del session el usuario NICOLAS LOPEZ 
-            objVenta.IdUsuario = 1;
+            objVenta.IdUsuario = objUsuario.IdUsuario;
             //
             objVenta.IdFormaPago = int.Parse(dropFormaPago.SelectedItem.Value);
             objVenta.DescripcionVenta = txtAclaracion.Text;

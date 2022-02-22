@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <%if (listaVentas.Count >0)
+        { %>
+
     <table class="table">
         <thead>
             <tr>
@@ -54,8 +57,22 @@
             <%    } %>
         </tbody>
     </table>
+    <%}
+        else
+        {%>
 
 
+
+
+    <div class="jumbotron">
+        <h1>¡No hay ninguna compra en su historial!</h1>
+        <p class="lead">Si desea hacer una compra, presiona el boton</p>
+        <p><a href="Productos.aspx" class="btn btn-primary btn-lg">Hace click Acá! &raquo;</a></p>
+
+    </div>
+
+
+    <%} %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>
