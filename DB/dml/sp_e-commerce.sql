@@ -154,7 +154,7 @@ END
 
 
 GO
-ALTER PROCEDURE SP_ListaVentasDespacho
+CREATE PROCEDURE SP_ListaVentasDespacho
 AS
 BEGIN
 select v.Fecha,
@@ -171,7 +171,7 @@ from Ventas as V where v.Estado =1
 END
 
 go
-alter PROCEDURE SP_ListaVentas
+CREATE PROCEDURE SP_ListaVentas
 AS
 BEGIN
 select v.Fecha,
@@ -250,7 +250,7 @@ VALUES (@idVenta, @idProducto, @precio, @cantidad, 1)
 END
 
 GO
-alter PROCEDURE SP_DetalleVenta
+CREATE PROCEDURE SP_DetalleVenta
 (
 	@idventa bigint
 )
@@ -435,7 +435,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter PROCEDURE SP_ListarUsuarios
+CREATE PROCEDURE SP_ListarUsuarios
 AS
 BEGIN
 
@@ -528,7 +528,7 @@ VALUES (@descripcion,1)
 END
 
 go
-alter PROCEDURE SP_EliminarCategoria
+CREATE PROCEDURE SP_EliminarCategoria
 (
 	@idcategoria bigint
 )
