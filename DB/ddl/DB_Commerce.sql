@@ -22,7 +22,13 @@ CREATE TABLE AdminCommerce(
     NombreComercio VARCHAR(100)not null,
     Email VARCHAR(50) not null,
     Clave varchar(100)not null,
-    Estado bit not null
+	Nombre varchar(100) not null,
+    Apellido varchar(100) not null,
+    Documento VARCHAR(8)not null,
+    Domicilio varchar(150) null,
+    Celular varchar(20)null,
+    Estado bit not null,
+	TipoUsuario int not null
 );
 GO
 
