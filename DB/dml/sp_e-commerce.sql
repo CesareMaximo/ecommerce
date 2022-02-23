@@ -587,6 +587,43 @@ END
 --/////////// TERMINA CONTACTO ///////////
 
 --////////// EMPIEZA ADMIN //////////
+
+/****** Object:  StoredProcedure SP_AgregarAdminEcommerce ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_AgregarAdminEcommerce
+-- Table AdminCommerce
+@nombreComercio VARCHAR(100),
+@email VARCHAR(50),
+@clave VARCHAR(50),
+@patron VARCHAR(50),
+@nombre varchar(100),
+@apellido varchar(100),
+@documento varchar(8),
+@domicilio varchar(150),
+@celular varchar(20),
+@estado BIT,
+@idTipoUsuario INT
+
+AS
+BEGIN
+
+DECLARE @IdAdminCommerce AS BIGINT;
+
+INSERT INTO AdminCommerce(NombreComercio, Email, Clave, Nombre, Apellido, Documento, Domicilio, Celular, Estado, TipoUsuario) 
+VALUES (@nombreComercio, @email, ENCRYPTBYPASSPHRASE(@patron, @clave), @nombre, @apellido, @documento, @domicilio, @celular, @estado, @idTipoUsuario)
+
+SELECT @IdAdminCommerce = IdAdminCommerce FROM AdminCommerce WHERE Email = @email;
+
+END
+GO
+ --EXECUTE SP_AgregarAdminEcommerce 'TiendaBerreta','nlopez@gmail.com','gogogo','e-commerce', 'Nicolas', 'Lopez', '290000001', 'Paunero 1856', '1500001111', 1, 1;
+ --EXECUTE SP_AgregarAdminEcommerce 'TiendaBerreta','eharris@gmail.com','gogogo','e-commerce', 'Ed', 'Harris', '450000001', 'Delia 5618', '1599992222', 1, 2;
+ --DROP PROCEDURE SP_AgregarAdminEcommerce;  
+ 
+
 GO
 create procedure SP_ListaAdmin
 AS
