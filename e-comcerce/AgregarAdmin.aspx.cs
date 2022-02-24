@@ -14,11 +14,12 @@ namespace e_comcerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
             {
-                Session.Add("error", "Debes loguearte para ingresar");
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
                 Response.Redirect("ErrorLogin.aspx", false);
-            }
+            }            
 
             if (!Page.IsPostBack) { }
             lblError.Text = "";

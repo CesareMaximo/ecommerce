@@ -14,12 +14,22 @@ namespace e_comcerce
         public List<Ventas> listaVentas = new List<Ventas>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
-            {
-                int idUsuario = int.Parse(Request.QueryString["id"].ToString());
 
-                listaVentas = VentaNegocio.getInstance().listaVentaxUsuario(idUsuario);
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
             }
+            else
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idUsuario = int.Parse(Request.QueryString["id"].ToString());
+
+                    listaVentas = VentaNegocio.getInstance().listaVentaxUsuario(idUsuario);
+                }
+            }            
         }
     }
 }
