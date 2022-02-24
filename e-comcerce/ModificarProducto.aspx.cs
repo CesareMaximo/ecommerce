@@ -20,37 +20,35 @@ namespace e_comcerce
         public Productoss aux { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-          
-
-            if (Request.QueryString["Id"] != null)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
             {
-                IdProducto = Convert.ToInt32(Request.QueryString["Id"]);
-
-
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
             }
-            listaproducto = (List<Productoss>)Session["listaproducto"];
-            objProducto = listaproducto.Find(x => x.IdProducto == IdProducto);
-
-            if (!IsPostBack)
+            else
             {
+                if (Request.QueryString["Id"] != null)
+                {
+                    IdProducto = Convert.ToInt32(Request.QueryString["Id"]);
+                }
+                listaproducto = (List<Productoss>)Session["listaproducto"];
+                objProducto = listaproducto.Find(x => x.IdProducto == IdProducto);
 
-                ddlCategoria.DataSource = CategoriaNEGOCIO.getInstance().listaCategoria();
-                ddlCategoria.DataTextField = "Descripcion";
-                ddlCategoria.DataValueField = "IdCategoria";
-                ddlCategoria.DataBind();
+                if (!IsPostBack)
+                {
+                    ddlCategoria.DataSource = CategoriaNEGOCIO.getInstance().listaCategoria();
+                    ddlCategoria.DataTextField = "Descripcion";
+                    ddlCategoria.DataValueField = "IdCategoria";
+                    ddlCategoria.DataBind();
 
-                txtDescripcion.Text = objProducto.Descripcion;
-                txtPrecio.Text = objProducto.Precio.ToString();
-                txtStock.Text = objProducto.Stock.ToString();
+                    txtDescripcion.Text = objProducto.Descripcion;
+                    txtPrecio.Text = objProducto.Precio.ToString();
+                    txtStock.Text = objProducto.Stock.ToString();
 
-                txtURL.Text = objProducto.UrlImagen;
-            }
-           
-           
-            
-           
-
+                    txtURL.Text = objProducto.UrlImagen;
+                }
+            }                        
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

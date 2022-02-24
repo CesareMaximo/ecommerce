@@ -19,28 +19,33 @@ namespace e_comcerce
         public List<FormaPago> listaFormaPago { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            carrito = new List<Carro>();
-            carrito = (List<Carro>)Session["carrito"];
-
-            total = 0;
-
-            foreach (Carro pro in carrito)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
             {
-                total += pro.Producto.Precio * pro.Cantidad;
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
             }
-            if (!IsPostBack)
+            else
             {
-                listaFormaPago = FormaPagoNegocio.getInstance().listarFormaPago();
+                carrito = new List<Carro>();
+                carrito = (List<Carro>)Session["carrito"];
 
-                dropFormaPago.DataSource = listaFormaPago;
-                dropFormaPago.DataTextField = "Descripcion";
-                dropFormaPago.DataValueField = "IdFormaPago";
-                dropFormaPago.DataBind();
+                total = 0;
+
+                foreach (Carro pro in carrito)
+                {
+                    total += pro.Producto.Precio * pro.Cantidad;
+                }
+                if (!IsPostBack)
+                {
+                    listaFormaPago = FormaPagoNegocio.getInstance().listarFormaPago();
+
+                    dropFormaPago.DataSource = listaFormaPago;
+                    dropFormaPago.DataTextField = "Descripcion";
+                    dropFormaPago.DataValueField = "IdFormaPago";
+                    dropFormaPago.DataBind();
+                }
             }
-           
-
-
-
         }
 
 

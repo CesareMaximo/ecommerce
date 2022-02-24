@@ -14,20 +14,13 @@ namespace e_comcerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-            {
-                Session.Add("error", "Debes loguearte para ingresar");
-                Response.Redirect("Error.aspx", false);
-            }
 
-            if (!(Session["usuario"] != null &&
-                ((Usuario)Session["usuario"]).TipoUsuario == TipoUsuario.ADMIN))
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
             {
-                Session.Add("error", "No tienes permisos para ingresar a esta pantalla. Necesitas nivel ADMIN.");
-                Response.Redirect("Error.aspx", false);
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
             }
-
-            if (!Page.IsPostBack) { }
         }
 
         [WebMethod]

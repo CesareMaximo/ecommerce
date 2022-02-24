@@ -23,7 +23,7 @@ namespace e_comcerce
                 )
             {
                 Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
-                Response.Redirect("ErrorLogin.aspx", false);
+                Response.Redirect("ErrorPermisos.aspx", false);
             }
             else
             {

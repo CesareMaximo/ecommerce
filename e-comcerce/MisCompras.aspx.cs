@@ -16,6 +16,20 @@ namespace e_comcerce
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
+            }
+            else
+            {
+                string email = Session["userName"].ToString();
+                Usuario usuario = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(email);
+
+                listaVentas = VentaNegocio.getInstance().listaVentaxUsuario(usuario.IdUsuario);
+            }
+
             if (!IsPostBack)
             {
                 string email = Session["userName"].ToString();
