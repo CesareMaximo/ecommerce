@@ -21,68 +21,62 @@ namespace e_comcerce
         protected void Page_Load(object sender, EventArgs e)
         {
 
-          
-            carrito = new List<Carro>();
-            carrito = (List<Carro>)Session["carrito"];
-
-            if (carrito != null)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
             {
-                foreach (Carro item in carrito)
-                {
-                    total += item.Producto.Precio * item.Cantidad;
-                }
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
             }
-            
-          
-
-           
-            if (Request.QueryString["Id"] != null)
+            else
             {
-                string id = Request.QueryString["Id"].ToString();
+                carrito = new List<Carro>();
+                carrito = (List<Carro>)Session["carrito"];
 
-                int idAux = int.Parse(id);
-                
-                foreach (Carro pro2 in carrito)
+                if (carrito != null)
                 {
-                    if(pro2.Producto.IdProducto == Convert.ToInt32(id))
+                    foreach (Carro item in carrito)
                     {
-                        total = total - pro2.Producto.Precio;
-                        if (pro2.Cantidad > 1)
-                        {
-                            pro2.Cantidad--;
-                            bool ok = ProductoNegocio.getInstance().AltaStock(idAux);
-                        }
-                        else
-                        {
-                            aux = 1;
-                        }
-                        
+                        total += item.Producto.Precio * item.Cantidad;
                     }
                 }
 
-                if (aux == 1)
+                if (Request.QueryString["Id"] != null)
                 {
-                    carrito.Remove(carrito.Find(x => x.Producto.IdProducto == int.Parse(id)));
+                    string id = Request.QueryString["Id"].ToString();
 
-                    bool ok = ProductoNegocio.getInstance().AltaStock(idAux);
+                    int idAux = int.Parse(id);
+
+                    foreach (Carro pro2 in carrito)
+                    {
+                        if (pro2.Producto.IdProducto == Convert.ToInt32(id))
+                        {
+                            total = total - pro2.Producto.Precio;
+                            if (pro2.Cantidad > 1)
+                            {
+                                pro2.Cantidad--;
+                                bool ok = ProductoNegocio.getInstance().AltaStock(idAux);
+                            }
+                            else
+                            {
+                                aux = 1;
+                            }
+
+                        }
+                    }
+
+                    if (aux == 1)
+                    {
+                        carrito.Remove(carrito.Find(x => x.Producto.IdProducto == int.Parse(id)));
+
+                        bool ok = ProductoNegocio.getInstance().AltaStock(idAux);
+                    }
+
+                    Session.Add("carrito", carrito);
                 }
-                
-
-                Session.Add("carrito", carrito);
-
-               
-
-
-
             }
-
-
-
         }
 
         protected void btnIniciarCompra_Click(object sender, EventArgs e)
-        {
-
-        }
+        {}
     }
 }

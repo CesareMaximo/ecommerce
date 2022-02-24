@@ -18,15 +18,16 @@ namespace e_comcerce
         {
             aux = "Productos.aspx";
             urlimagen = "https://www.diariodesevilla.es/2021/10/13/wappissima/actualidad/Peninsula-Vintage-Clothing-tiendas-vintage_1619548404_145419545_1200x675.png";
-            contacto = "Contact.aspx";
+            contacto = "Contact.aspx";                        
             
            if (Session["usuario"] == null)
             {
-                Session.Add("error", "Debes loguearte para ingresar");
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
                 Response.Redirect("ErrorLogin.aspx", false);
             }            
 
             if (!Page.IsPostBack) { }
         }
+     
     }
 }

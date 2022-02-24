@@ -15,20 +15,29 @@ namespace e_comcerce
         public Usuario objAdmin = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listaAdmin = AdminNegocio.getInstance().listaAdmin();
-
-            if (Request.QueryString["id"] != null)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
             {
-                int idAdmin = int.Parse(Request.QueryString["id"].ToString());
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+            else
+            {
+                listaAdmin = AdminNegocio.getInstance().listaAdmin();
 
-                foreach (Usuario item in listaAdmin)
+                if (Request.QueryString["id"] != null)
                 {
-                    if(item.IdUsuario == idAdmin)
+                    int idAdmin = int.Parse(Request.QueryString["id"].ToString());
+
+                    foreach (Usuario item in listaAdmin)
                     {
-                        objAdmin = item;
+                        if (item.IdUsuario == idAdmin)
+                        {
+                            objAdmin = item;
+                        }
                     }
                 }
-            }
+            }            
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

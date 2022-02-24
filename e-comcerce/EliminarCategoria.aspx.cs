@@ -18,21 +18,30 @@ namespace e_comcerce
         public Categoria objCategoria = new Categoria();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listaCategoria = CategoriaNEGOCIO.getInstance().listaCategoria();
-
-            if (Request.QueryString["id"] != null)
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
             {
-                string idCategoria = Request.QueryString["id"].ToString();
-                idCat = int.Parse(idCategoria);
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+            else
+            {
+                listaCategoria = CategoriaNEGOCIO.getInstance().listaCategoria();
 
-                foreach (Categoria item in listaCategoria)
+                if (Request.QueryString["id"] != null)
                 {
-                    if(idCat == item.IdCategoria)
+                    string idCategoria = Request.QueryString["id"].ToString();
+                    idCat = int.Parse(idCategoria);
+
+                    foreach (Categoria item in listaCategoria)
                     {
-                        objCategoria = item;
+                        if (idCat == item.IdCategoria)
+                        {
+                            objCategoria = item;
+                        }
                     }
                 }
-            }
+            }            
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)

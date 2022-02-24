@@ -16,16 +16,26 @@ namespace e_comcerce
         public decimal Total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            if (Session["usuario"] == null
+                //|| ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN
+                )
             {
-                int idVenta = int.Parse(Request.QueryString["id"].ToString());
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+            else
+            {
+                if (Request.QueryString["id"] != null)
+                {
+                    int idVenta = int.Parse(Request.QueryString["id"].ToString());
 
-                listaDetalle = DetalleVentaNegocio.getInstance().ListaDetalleVenta(idVenta);
-            }
-            foreach (DetalleVenta item in listaDetalle)
-            {
-                Total += item.Precio * item.Cantidad;
-            }
+                    listaDetalle = DetalleVentaNegocio.getInstance().ListaDetalleVenta(idVenta);
+                }
+                foreach (DetalleVenta item in listaDetalle)
+                {
+                    Total += item.Precio * item.Cantidad;
+                }
+            }            
         }
     }
 }

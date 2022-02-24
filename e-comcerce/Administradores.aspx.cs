@@ -14,7 +14,17 @@ namespace e_comcerce
         public List<Usuario> listaAdmin = new List<Usuario>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listaAdmin = AdminNegocio.getInstance().listaAdmin();
+            
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
+            else
+            {
+                listaAdmin = AdminNegocio.getInstance().listaAdmin();
+            }
         }
     }
 }

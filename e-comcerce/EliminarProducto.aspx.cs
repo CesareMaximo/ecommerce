@@ -17,15 +17,21 @@ namespace e_comcerce
         List<Productoss> ListaProducto { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-           if (Request.QueryString["Id"] != null)
-           {
-                id = Convert.ToInt32( Request.QueryString["Id"]);
-
-                
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorLogin.aspx", false);
             }
-            ListaProducto = (List<Productoss>)Session["listaproducto"];
-            objProducto = ListaProducto.Find(x => x.IdProducto == id);
-
+            else
+            {
+                if (Request.QueryString["Id"] != null)
+                {
+                    id = Convert.ToInt32(Request.QueryString["Id"]);
+                }
+                ListaProducto = (List<Productoss>)Session["listaproducto"];
+                objProducto = ListaProducto.Find(x => x.IdProducto == id);
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
