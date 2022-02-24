@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaDominio;
+using CapaNegocio;
+using System.Web.Services;
 
 namespace e_comcerce
 {
@@ -11,7 +14,60 @@ namespace e_comcerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes loguearte para ingresar");
+                Response.Redirect("ErrorLogin.aspx", false);
+            }
 
+            if (!Page.IsPostBack) { }
+            lblError.Text = "";
+            lblErrorContrasenia.Text = "";
+        }
+
+        protected void BtnRegistrar_Click(object sender, EventArgs e)
+        {
+            if (RegisterNombre.Text == "" ||
+                RegisterApellido.Text == "" ||
+                RegisterDNI.Text == "" ||
+                RegisterUsuario.Text == "" ||
+                RegisterPassword.Text == "" ||
+                RegisterRePassword.Text == "")
+            {
+                lblError.Text = "Ningun campo puede quedar vacio.";
+            }
+            else
+            {
+                if (RegisterPassword.Text != RegisterRePassword.Text)
+                {
+                    lblErrorContrasenia.Text = "Las contrasenias no coinciden.";
+                }
+                else
+                {
+                    bool existeUsuario = UsuarioNegocio.getInstance().BuscarSiExisteUsuarioPorEmail(RegisterUsuario.Text);
+
+                    if (!existeUsuario)
+                    {
+                        Usuario usuarioAGuardar = new Usuario(RegisterUsuario.Text, RegisterPassword.Text,
+                                                                true, true, RegisterNombre.Text, RegisterApellido.Text,
+                                                                RegisterDNI.Text, RegisterDomicilio.Text, RegisterCelular.Text);
+                        bool usuarioRegistrado = UsuarioNegocio.getInstance().RegistrarUsuario(usuarioAGuardar);
+                        if (usuarioRegistrado == true)
+                        {
+                            Response.Write("<script>alert('Usuario Administrador registrado correctamente.')</script>");
+                            Response.Redirect("Administradores.aspx");
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Usuario Administrador No Registrado.')</script>");
+                        }
+                    }
+                    else
+                    {
+                        Response.Write("<script>alert('Nombre de usuario Administrador ya registrado.')</script>");
+                    }
+                }
+            }
         }
     }
 }
