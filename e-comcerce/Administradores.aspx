@@ -7,8 +7,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre del Comercio</th>
+                <th scope="col">ID</th>                
                 <th scope="col">Email</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Eliminar</th>
@@ -22,13 +21,12 @@
                  <td> <a class="btn btn-success" href="AgregarAdmin.aspx">Agregar Administrador</a></td>
              </tr>
 
-            <% foreach (CapaDominio.AdminComerce item in listaAdmin)
+            <% foreach (CapaDominio.Usuario item in listaAdmin)
                 {
             %>
 
             <tr>
-                <td><%: item.IdAdminCommerce %></td>
-                <td><%: item.NombreComercio %></td>
+                <td><%: item.IdUsuario %></td>                
                 <td><%: item.Email %></td>
 
                 <%if (item.Estado == true)
@@ -43,12 +41,12 @@
 
                 <% }%>
 
-                <td><a href="EliminarAdmin.aspx?id=<%: item.IdAdminCommerce %>" class="btn btn-danger">Eliminar</a> </td>
+                <td><a href="EliminarAdmin.aspx?id=<%: item.IdUsuario %>" class="btn btn-danger">Eliminar</a> </td>
 
                 <%if (item.Estado == false)
                     {
                 %>
-                    <td><a href="AltaAdmin.aspx?id=<%: item.IdAdminCommerce %>" class="btn btn-success">Dar Alta</a></td>
+                    <td><a href="AltaAdmin.aspx?id=<%: item.IdUsuario %>" class="btn btn-success">Dar Alta</a></td>
                 <%  }
                     else
                     {%>
