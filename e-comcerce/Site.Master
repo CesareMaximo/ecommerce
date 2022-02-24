@@ -80,11 +80,10 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
 
-
-                        <% if (Session["usuario"] != null)
+                        <% if (!EsSessionNull())
                             {  %>
-
-                        <% if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.ADMIN)
+                        
+                        <% if (EsUsuarioAdministrador())
                             {%>
                         <li><a runat="server" href="IndexAdmin.aspx">Panel Administrador </a></li>
                         <% } %>
@@ -103,23 +102,18 @@
 
                                 <li><a href="Productos.aspx?idaux=<%:aux.IdCategoria %>" class="dropdown-toggle glyphicon glyphicon-menu-hamburger"><%:aux.Descripcion %></a> </li>
 
-
                                 <%
                                     } %>
                             </ul>
                         </li>
-
-
-                        <% if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.COMPRADOR)
+                        
+                        <% if (EsUsuarioComprador())
                             {%>
                         <li><a runat="server" href="~/Carrito">Carrito 🛒 </a></li>
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
                         <% } %>
-
-
-
-
-                        <% if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.ADMIN)
+                        
+                        <% if (EsUsuarioAdministrador())
                             {%>
                         <li><a runat="server" href="ListadoCompradores.aspx">Listado </a></li>
                         <% } %>
@@ -128,13 +122,11 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="PerfilUsuario.aspx" runat="server"><i class="glyphicon glyphicon-user"></i><span id="idProfile">Ver Perfil</span></a></li>
-
-                                <% if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.COMPRADOR)
+                                
+                                <% if (EsUsuarioComprador())
                                     {%>
                                 <li><a href="MisCompras.aspx" runat="server"><i class="glyphicon glyphicon-shopping-cart"></i><span id="idCompra">Ver Mis compras</span></a></li>
                                 <% } %>
-
-
 
                                 <li><a href="#" runat="server"><i class="glyphicon glyphicon-lock"></i><span id="idProfilePassword">Cambiar Contraseña</span></a></li>
                                 <li role="separator" class="divider"></li>
