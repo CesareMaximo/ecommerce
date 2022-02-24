@@ -16,8 +16,7 @@ namespace e_comcerce
         public decimal Total = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null ||
-                ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
+            if (Session["usuario"] == null )
             {
                 Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
                 Response.Redirect("ErrorPermisos.aspx", false);

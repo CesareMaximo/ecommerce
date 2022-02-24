@@ -37,6 +37,10 @@ namespace e_comcerce
                 Session.Add("carrito", carrito);
 
                 ID_Venta = DetalleVentaNegocio.getInstance().UltimoIdVenta();
+
+                CapaNegocio.EmailService email = new CapaNegocio.EmailService();
+                email.armarCorreoVenta(ID_Venta);
+                email.EnviarEmail();
             }            
         }
     }

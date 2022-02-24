@@ -112,5 +112,18 @@ namespace CapaNegocio
                 throw ex;
             }
         }
+
+        public Usuario UsuarioxID(int idUsuario)
+        {
+            try
+            {
+                return UsuarioDAO.getInstance().UsuarioXid(idUsuario);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

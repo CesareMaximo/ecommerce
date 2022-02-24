@@ -166,6 +166,7 @@ namespace CapaDAO
                     objVenta.DescripcionVenta = dr["DescripcionVenta"].ToString();
                     objVenta.IdUsuario = Convert.ToInt32(dr["IdUsuario"].ToString());
                     objVenta.Estado = Convert.ToBoolean(dr["Estado"].ToString());
+                    objVenta.IdUsuario = Convert.ToInt32(dr["IdUsuario"].ToString());
                     lista.Add(objVenta);
                 }
             }
@@ -180,7 +181,44 @@ namespace CapaDAO
             }
             return lista;
         }
-        
+        public Ventas VentaxID(int idVenta)
+        {
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            Ventas objventa = new Ventas();
+            try
+            {
+                con = Conexion.getInstance().ConexionBD();
+                cmd = new SqlCommand("SP_VentaxID", con);
+                cmd.Parameters.AddWithValue("@idVenta", idVenta);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    
+                    objventa.Total = Convert.ToDecimal(dr["Total"].ToString());
+                    objventa.IdUsuario = Convert.ToInt32(dr["IdUsuario"].ToString());
+                    objventa.IdFormaPago = Convert.ToInt32(dr["IdFormaPago"].ToString());
+                    objventa.DireccionEnvio = dr["DireccionEnvio"].ToString();
+                    objventa.FechaVenta = Convert.ToDateTime(dr["Fecha"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return objventa;
+        }
         public List<Ventas> listaVentaxUsuario(int idUsuario)
         {
             List<Ventas> lista = new List<Ventas>();

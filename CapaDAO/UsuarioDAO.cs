@@ -297,5 +297,45 @@ namespace CapaDAO
             }
             return ok;
         }
+
+        public Usuario UsuarioXid(int idUsuario)
+        {
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            Usuario objUsuario = new Usuario();
+            try
+            {
+                con = Conexion.getInstance().ConexionBD();
+                cmd = new SqlCommand("SP_ListarUsuarioXid", con);
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                con.Open();
+
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    objUsuario.Email = dr["Usuario"].ToString();
+                    objUsuario.Nombre = dr["Nombre"].ToString();
+                    objUsuario.Apellido = dr["Apellido"].ToString();
+                    objUsuario.Documento = dr["Documento"].ToString();
+                    objUsuario.Domicilio = dr["Domicilio"].ToString();
+                    objUsuario.Celular = dr["Celular"].ToString();
+                    
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return objUsuario;
+        }
     }
 }

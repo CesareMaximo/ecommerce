@@ -14,6 +14,7 @@
                 <th scope="col">Aclaracion</th>
                 <th scope="col">Direccion Envio</th>
                 <th scope="col">Estado</th>
+                <th scope="col">ID del Cliente</th>
                 <th scope="col">Haz Click para ver todos los detalles</th>
 
             </tr>
@@ -51,7 +52,7 @@
                     {%>
                 <td> Venta ya enviada </td>
                 <%} %>
-
+                <td><%: item.IdUsuario %></td>
                 <td><a class="btn btn-success" href="DetalleVentaRegistro.aspx?id=<%:item.IdVenta %>">Ver Detalles de Venta</a></td>
             </tr>
 

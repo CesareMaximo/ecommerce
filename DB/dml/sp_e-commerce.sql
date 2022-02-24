@@ -152,9 +152,28 @@ DireccionEnvio, EstadoEnvio, Total, Fecha, Estado, EstadoRetiro)
 VALUES (@idUsuario, @idPago, @descripcion, @direccion, @estadoenvio, @total,GETDATE(),1, @estadoretiro)
 END
 
+go
+create PROCEDURE SP_VentaxID
+(
+	@idVenta bigint
+)
+AS
+BEGIN
+
+	select Total,
+			IdUsuario,
+			IdFormaPago,
+			DireccionEnvio,
+			Fecha
+
+
+
+	from Ventas where IdVenta = @idVenta
+
+END
 
 GO
-CREATE PROCEDURE SP_ListaVentasDespacho
+create PROCEDURE SP_ListaVentasDespacho
 AS
 BEGIN
 select v.Fecha,
@@ -163,7 +182,8 @@ select v.Fecha,
 		v.EstadoRetiro,
 		v.IdVenta,
 		v.DireccionEnvio,
-		v.DescripcionVenta
+		v.DescripcionVenta,
+		v.IdUsuario
 
 
 from Ventas as V where v.Estado =1
@@ -497,6 +517,26 @@ AS
 	END
 GO
 
+create PROCEDURE SP_ListarUsuarioXid
+(
+	@idUsuario bigint
+)
+AS
+BEGIN
+select 
+	U.Usuario
+	  ,U.Nombre
+      ,U.Apellido
+      ,U.Documento
+      ,U.Domicilio
+      ,U.Celular
+	 
+
+
+from Usuarios as u where IdUsuario = @idUsuario
+END
+
+
 -- DROP PROCEDURE [SP_ActualizarDatosUsuario];
 
 -- EXECUTE SP_ActualizarDatosUsuario 'max@gmail.com','jon','snow', '50222111', 'Italia 300', '1533331111';
@@ -645,6 +685,7 @@ SELECT U.Usuario
 
 END
 
+
 -- DROP PROCEDURE SP_ListaAdmin;
 
 GO
@@ -658,6 +699,7 @@ BEGIN
 
 END
 
+select * from Usuarios where TipoUsuario=1
 --DROP PROCEDURE SP_EliminarAdmin
 
 GO

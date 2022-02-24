@@ -88,6 +88,18 @@ namespace CapaNegocio
                 throw ex;
             }
         }
+        public Ventas VentaxID(int idVenta)
+        {
+            try
+            {
+                return VentaDAO.getInstance().VentaxID(idVenta);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
     }
 }
