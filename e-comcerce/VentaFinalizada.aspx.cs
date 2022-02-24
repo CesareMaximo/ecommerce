@@ -16,7 +16,7 @@ namespace e_comcerce
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usuario"] == null ||
-               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.COMPRADOR)
             {
                 Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
                 Response.Redirect("ErrorPermisos.aspx", false);
