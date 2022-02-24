@@ -11,7 +11,7 @@ namespace e_comcerce
 {
     public partial class Administradores : System.Web.UI.Page
     {
-        public List<AdminComerce> listaAdmin = new List<AdminComerce>();
+        public List<Usuario> listaAdmin = new List<Usuario>();
         protected void Page_Load(object sender, EventArgs e)
         {
             listaAdmin = AdminNegocio.getInstance().listaAdmin();

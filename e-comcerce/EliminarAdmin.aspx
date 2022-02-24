@@ -6,8 +6,7 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre Comercio</th>
+      <th scope="col">ID</th>      
       <th scope="col">Email</th>
      
     </tr>
@@ -15,8 +14,7 @@
   <tbody>
     <tr>
      
-      <td><%: objAdmin.IdAdminCommerce%></td>
-      <td><%: objAdmin.NombreComercio %></td>
+      <td><%: objAdmin.IdUsuario%></td>      
       <td><%: objAdmin.Email %></td>
     </tr>
 

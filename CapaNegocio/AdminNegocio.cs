@@ -24,7 +24,7 @@ namespace CapaNegocio
         #endregion
 
 
-        public List<AdminComerce> listaAdmin()
+        public List<Usuario> listaAdmin()
         {
             try
             {

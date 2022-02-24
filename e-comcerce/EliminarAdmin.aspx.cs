@@ -11,8 +11,8 @@ namespace e_comcerce
 {
     public partial class EliminarAdmin : System.Web.UI.Page
     {
-        public List<AdminComerce> listaAdmin = new List<AdminComerce>();
-        public AdminComerce objAdmin = new AdminComerce();
+        public List<Usuario> listaAdmin = new List<Usuario>();
+        public Usuario objAdmin = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
             listaAdmin = AdminNegocio.getInstance().listaAdmin();
@@ -21,9 +21,9 @@ namespace e_comcerce
             {
                 int idAdmin = int.Parse(Request.QueryString["id"].ToString());
 
-                foreach (AdminComerce item in listaAdmin)
+                foreach (Usuario item in listaAdmin)
                 {
-                    if(item.IdAdminCommerce == idAdmin)
+                    if(item.IdUsuario == idAdmin)
                     {
                         objAdmin = item;
                     }
@@ -33,7 +33,7 @@ namespace e_comcerce
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool ok = AdminNegocio.getInstance().EliminarAdmin(objAdmin.IdAdminCommerce);
+            bool ok = AdminNegocio.getInstance().EliminarAdmin(objAdmin.IdUsuario);
 
             if (ok == true)
             {

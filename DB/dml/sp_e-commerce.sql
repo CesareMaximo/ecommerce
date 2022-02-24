@@ -154,7 +154,7 @@ END
 
 
 GO
-ALTER PROCEDURE SP_ListaVentasDespacho
+CREATE PROCEDURE SP_ListaVentasDespacho
 AS
 BEGIN
 select v.Fecha,
@@ -171,7 +171,7 @@ from Ventas as V where v.Estado =1
 END
 
 go
-alter PROCEDURE SP_ListaVentas
+CREATE PROCEDURE SP_ListaVentas
 AS
 BEGIN
 select v.Fecha,
@@ -250,7 +250,7 @@ VALUES (@idVenta, @idProducto, @precio, @cantidad, 1)
 END
 
 GO
-alter PROCEDURE SP_DetalleVenta
+CREATE PROCEDURE SP_DetalleVenta
 (
 	@idventa bigint
 )
@@ -308,6 +308,7 @@ SELECT @IdUsuario = IdUsuario FROM Usuarios WHERE Usuario = @usuario;
 END
 GO
 -- EXECUTE SP_AgregarUsuario 'nlopez@gmail.com','gogogo','e-commerce', 'Nicolas', 'Lopez', '290000001', 'Paunero 1856', '1500001111', 1, 1;
+ -- EXECUTE SP_AgregarUsuario 'jsnow@gmail.com','gogogo','e-commerce', 'John', 'Snow', '300000002', 'Italia 936', '1533332222', 1, 1;
 -- EXECUTE SP_AgregarUsuario 'eharris@gmail.com','gogogo','e-commerce', 'Ed', 'Harris', '450000001', 'Delia 5618', '1599992222', 1, 2;
 -- DROP PROCEDURE SP_AgregarUsuario;  
  
@@ -435,7 +436,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter PROCEDURE SP_ListarUsuarios
+CREATE PROCEDURE SP_ListarUsuarios
 AS
 BEGIN
 
@@ -528,7 +529,7 @@ VALUES (@descripcion,1)
 END
 
 go
-alter PROCEDURE SP_EliminarCategoria
+CREATE PROCEDURE SP_EliminarCategoria
 (
 	@idcategoria bigint
 )
@@ -587,44 +588,89 @@ END
 --/////////// TERMINA CONTACTO ///////////
 
 --////////// EMPIEZA ADMIN //////////
+
+/****** Object:  StoredProcedure SP_AgregarAdminEcommerce ******/
+SET ANSI_NULLS ON
 GO
-create procedure SP_ListaAdmin
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_AgregarAdminEcommerce
+-- Table AdminCommerce
+@nombreComercio VARCHAR(100),
+@email VARCHAR(50),
+@clave VARCHAR(50),
+@patron VARCHAR(50),
+@nombre varchar(100),
+@apellido varchar(100),
+@documento varchar(8),
+@domicilio varchar(150),
+@celular varchar(20),
+@estado BIT,
+@idTipoUsuario INT
+
 AS
 BEGIN
 
-select NombreComercio,
-		Email,
-		Estado,
-		IdAdminCommerce
+DECLARE @IdAdminCommerce AS BIGINT;
 
+INSERT INTO AdminCommerce(NombreComercio, Email, Clave, Nombre, Apellido, Documento, Domicilio, Celular, Estado, TipoUsuario) 
+VALUES (@nombreComercio, @email, ENCRYPTBYPASSPHRASE(@patron, @clave), @nombre, @apellido, @documento, @domicilio, @celular, @estado, @idTipoUsuario)
 
+SELECT @IdAdminCommerce = IdAdminCommerce FROM AdminCommerce WHERE Email = @email;
 
-from AdminCommerce
+END
+GO
+ --EXECUTE SP_AgregarAdminEcommerce 'TiendaBerreta','nlopez@gmail.com','gogogo','e-commerce', 'Nicolas', 'Lopez', '290000001', 'Paunero 1856', '1500001111', 1, 1;
+ --EXECUTE SP_AgregarAdminEcommerce 'TiendaBerreta','eharris@gmail.com','gogogo','e-commerce', 'Ed', 'Harris', '450000001', 'Delia 5618', '1599992222', 1, 2;
+ --DROP PROCEDURE SP_AgregarAdminEcommerce;  
+ 
+
+GO
+CREATE PROCEDURE SP_ListaAdmin
+AS
+BEGIN
+
+SELECT U.Usuario
+      --,U.Clave
+      ,U.Estado
+      --,U.TipoUsuario
+	  ,U.Nombre
+      ,U.Apellido
+      ,U.Documento
+      ,U.Domicilio
+      ,U.Celular,
+	   U.IdUsuario
+  FROM Usuarios U 
+  WHERE U.TipoUsuario = 1;
+
 END
 
-go
-create procedure SP_EliminarAdmin
+-- DROP PROCEDURE SP_ListaAdmin;
+
+GO
+CREATE PROCEDURE SP_EliminarAdmin
 (
-	@idadmin bigint
+	@idUsuario BIGINT
 )
 AS
 BEGIN
-UPDATE AdminCommerce set Estado = 0 where IdAdminCommerce = @idadmin
+	UPDATE Usuarios SET Estado = 0 WHERE IdUsuario = @idUsuario
 
 END
 
-go
-create procedure SP_AltaAdmin
+--DROP PROCEDURE SP_EliminarAdmin
+
+GO
+CREATE PROCEDURE SP_AltaAdmin
 (
-	@idadmin bigint
+	@idUsuario BIGINT
 )
 AS
 BEGIN
-UPDATE AdminCommerce set Estado = 1 where IdAdminCommerce = @idadmin
-
+	UPDATE Usuarios SET Estado = 1 WHERE IdUsuario = @idUsuario
 END
+
+--DROP PROCEDURE SP_AltaAdmin
 
 
 --////////// TERMINA ADMIN //////////
-
-select * from ventas

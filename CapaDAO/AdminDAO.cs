@@ -25,9 +25,9 @@ namespace CapaDAO
         }
         #endregion
 
-        public List<AdminComerce> listaAdmin()
+        public List<Usuario> listaAdmin()
         {
-            List<AdminComerce> lista = new List<AdminComerce>();
+            List<Usuario> lista = new List<Usuario>();
             SqlConnection con = null;
             SqlCommand cmd = null;
             SqlDataReader dr = null;
@@ -41,12 +41,16 @@ namespace CapaDAO
                 dr = cmd.ExecuteReader();
 
                 while (dr.Read())
-                {
-                    AdminComerce objAdmin = new AdminComerce();
-                    objAdmin.NombreComercio = dr["NombreComercio"].ToString();
-                    objAdmin.Email = dr["Email"].ToString();
+                {                   
+                    Usuario objAdmin = new Usuario();
+                    objAdmin.Email = dr["Usuario"].ToString();
+                    objAdmin.Nombre = dr["Nombre"].ToString();
+                    objAdmin.Apellido = dr["Apellido"].ToString();
+                    objAdmin.Documento = dr["Documento"].ToString();
+                    objAdmin.Domicilio = dr["Domicilio"].ToString();
+                    objAdmin.Celular = dr["Celular"].ToString();
+                    objAdmin.IdUsuario = Convert.ToInt32(dr["IdUsuario"].ToString());
                     objAdmin.Estado = Convert.ToBoolean(dr["Estado"].ToString());
-                    objAdmin.IdAdminCommerce = Convert.ToInt32(dr["IdAdminCommerce"].ToString());
 
                     lista.Add(objAdmin);
                 }
@@ -76,7 +80,7 @@ namespace CapaDAO
                 con = Conexion.getInstance().ConexionBD();
                 cmd = new SqlCommand("SP_EliminarAdmin", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idadmin", idAdmin);
+                cmd.Parameters.AddWithValue("@idUsuario", idAdmin);
                 con.Open();
 
 
@@ -106,7 +110,7 @@ namespace CapaDAO
                 con = Conexion.getInstance().ConexionBD();
                 cmd = new SqlCommand("SP_AltaAdmin", con);
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idadmin", idAdmin);
+                cmd.Parameters.AddWithValue("@idUsuario", idAdmin);
                 con.Open();
 
 

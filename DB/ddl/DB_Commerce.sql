@@ -17,15 +17,6 @@ CREATE TABLE Usuarios(
 );
 GO
 
-CREATE TABLE AdminCommerce(
-    IdAdminCommerce bigint not null PRIMARY KEY IDENTITY(1,1),
-    NombreComercio VARCHAR(100)not null,
-    Email VARCHAR(50) not null,
-    Clave varchar(100)not null,
-    Estado bit not null
-);
-GO
-
 CREATE TABLE FormaPago(
     IdFormaPago bigint not null PRIMARY KEY IDENTITY(1,1),
     Descripcion varchar(30) not null,
