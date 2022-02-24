@@ -27,5 +27,21 @@ namespace e_comcerce
             }
 
         }
+
+        public bool EsSessionNull() {            
+            if (Session["usuario"] == null) return true;
+            else return false;
+        }
+
+        public bool EsUsuarioComprador() {
+            if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.COMPRADOR) return true;
+            else return false;
+        }
+
+        public bool EsUsuarioAdministrador()
+        {
+            if (((CapaDominio.Usuario)Session["usuario"]).TipoUsuario == CapaDominio.TipoUsuario.ADMIN) return true;
+            else return false;
+        }
     }
 }
