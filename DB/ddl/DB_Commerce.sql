@@ -17,20 +17,20 @@ CREATE TABLE Usuarios(
 );
 GO
 
-CREATE TABLE AdminCommerce(
-    IdAdminCommerce bigint not null PRIMARY KEY IDENTITY(1,1),
-    NombreComercio VARCHAR(100)not null,
-    Email VARCHAR(50) not null,
-    Clave varchar(100)not null,
-	Nombre varchar(100) not null,
-    Apellido varchar(100) not null,
-    Documento VARCHAR(8)not null,
-    Domicilio varchar(150) null,
-    Celular varchar(20)null,
-    Estado bit not null,
-	TipoUsuario int not null
-);
-GO
+--CREATE TABLE AdminCommerce(
+--    IdAdminCommerce bigint not null PRIMARY KEY IDENTITY(1,1),
+--    NombreComercio VARCHAR(100)not null,
+--    Email VARCHAR(50) not null,
+--    Clave varchar(100)not null,
+--	Nombre varchar(100) not null,
+--    Apellido varchar(100) not null,
+--    Documento VARCHAR(8)not null,
+--    Domicilio varchar(150) null,
+--    Celular varchar(20)null,
+--    Estado bit not null,
+--	TipoUsuario int not null
+--);
+--GO
 
 CREATE TABLE FormaPago(
     IdFormaPago bigint not null PRIMARY KEY IDENTITY(1,1),

@@ -625,43 +625,51 @@ GO
  
 
 GO
-create procedure SP_ListaAdmin
+CREATE PROCEDURE SP_ListaAdmin
 AS
 BEGIN
 
-select NombreComercio,
-		Email,
-		Estado,
-		IdAdminCommerce
+SELECT U.Usuario
+      --,U.Clave
+      ,U.Estado
+      --,U.TipoUsuario
+	  ,U.Nombre
+      ,U.Apellido
+      ,U.Documento
+      ,U.Domicilio
+      ,U.Celular,
+	   U.IdUsuario
+  FROM Usuarios U 
+  WHERE U.TipoUsuario = 1;
 
-
-
-from AdminCommerce
 END
 
-go
-create procedure SP_EliminarAdmin
+-- DROP PROCEDURE SP_ListaAdmin;
+
+GO
+CREATE PROCEDURE SP_EliminarAdmin
 (
-	@idadmin bigint
+	@idUsuario BIGINT
 )
 AS
 BEGIN
-UPDATE AdminCommerce set Estado = 0 where IdAdminCommerce = @idadmin
+	UPDATE Usuarios SET Estado = 0 WHERE IdUsuario = @idUsuario
 
 END
 
-go
-create procedure SP_AltaAdmin
+--DROP PROCEDURE SP_EliminarAdmin
+
+GO
+CREATE PROCEDURE SP_AltaAdmin
 (
-	@idadmin bigint
+	@idUsuario BIGINT
 )
 AS
 BEGIN
-UPDATE AdminCommerce set Estado = 1 where IdAdminCommerce = @idadmin
-
+	UPDATE Usuarios SET Estado = 1 WHERE IdUsuario = @idUsuario
 END
+
+--DROP PROCEDURE SP_AltaAdmin
 
 
 --////////// TERMINA ADMIN //////////
-
-select * from ventas
