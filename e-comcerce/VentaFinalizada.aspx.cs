@@ -15,12 +15,29 @@ namespace e_comcerce
         public int ID_Venta = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            carrito = (List<Carro>)Session["carrito"];
-            carrito = new List<Carro>();
-            Session.Add("carrito", carrito);
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
+            }
+            else
+            {
+                //if (!IsPostBack) 
+                //{
+                //    carrito = (List<Carro>)Session["carrito"];
+                //    carrito = new List<Carro>();
+                //    Session.Add("carrito", carrito);
 
+                //    ID_Venta = DetalleVentaNegocio.getInstance().UltimoIdVenta();
+                //}
 
-            ID_Venta = DetalleVentaNegocio.getInstance().UltimoIdVenta();
+                carrito = (List<Carro>)Session["carrito"];
+                carrito = new List<Carro>();
+                Session.Add("carrito", carrito);
+
+                ID_Venta = DetalleVentaNegocio.getInstance().UltimoIdVenta();
+            }            
         }
     }
 }

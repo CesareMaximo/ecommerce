@@ -14,24 +14,29 @@ namespace e_comcerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
-            //TODO Checkear este if.
-            if (!Page.IsPostBack)
+            if (Session["usuario"] == null)
             {
-                string email = Session["userName"].ToString();
-                Usuario usuario = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(email);
-
-                PerfilNombre.Text = usuario.Nombre;
-                PerfilApellido.Text = usuario.Apellido;
-                PerfilDNI.Text = usuario.Documento;
-                PerfilDomicilio.Text = usuario.Domicilio;
-                PerfilCelular.Text = usuario.Celular;
-                PerfilEmail.Text = usuario.Email;
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
             }
-            lblError.Text = "";
-            lblErrorContrasenia.Text = "";
+            else
+            {
+                //TODO Checkear este if.
+                if (!Page.IsPostBack)
+                {
+                    string email = Session["userName"].ToString();
+                    Usuario usuario = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(email);
 
+                    PerfilNombre.Text = usuario.Nombre;
+                    PerfilApellido.Text = usuario.Apellido;
+                    PerfilDNI.Text = usuario.Documento;
+                    PerfilDomicilio.Text = usuario.Domicilio;
+                    PerfilCelular.Text = usuario.Celular;
+                    PerfilEmail.Text = usuario.Email;
+                }
+                lblError.Text = "";
+                lblErrorContrasenia.Text = "";
+            }            
         }
 
         protected void BtnGuardar_Click(object sender, EventArgs e)

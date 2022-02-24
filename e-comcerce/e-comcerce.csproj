@@ -128,6 +128,7 @@
     <Content Include="EliminarProducto.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="ErrorLogin.aspx" />
+    <Content Include="ErrorPermisos.aspx" />
     <Content Include="errorStock.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -339,6 +340,13 @@
     </Compile>
     <Compile Include="ErrorLogin.aspx.designer.cs">
       <DependentUpon>ErrorLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPermisos.aspx.cs">
+      <DependentUpon>ErrorPermisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPermisos.aspx.designer.cs">
+      <DependentUpon>ErrorPermisos.aspx</DependentUpon>
     </Compile>
     <Compile Include="errorStock.aspx.cs">
       <DependentUpon>errorStock.aspx</DependentUpon>

@@ -23,93 +23,80 @@ namespace e_comcerce
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                listaProductos = ProductoNegocio.getInstance().listaProductos();
-                Session.Add("listaproducto", listaProductos);
 
-                if (Session["carrito"] == null)
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
+            }
+            else
+            {
+                if (!IsPostBack)
                 {
-                    carrito = new List<Carro>();
-                    Session.Add("carrito", carrito);
+                    listaProductos = ProductoNegocio.getInstance().listaProductos();
+                    Session.Add("listaproducto", listaProductos);
+
+                    if (Session["carrito"] == null)
+                    {
+                        carrito = new List<Carro>();
+                        Session.Add("carrito", carrito);
+                    }
                 }
 
-                
-            }
-
-            if (Request.QueryString["idaux"] != null)
-            {
-               string idCategoria = Request.QueryString["idaux"].ToString();
-                idCategoriaAux = int.Parse(idCategoria);
-
-                
-            }
-
-            if (Request.QueryString["Id"] != null)
-            {
-                string IdProducto = Request.QueryString["Id"].ToString();
-                carrito = (List<Carro>)Session["carrito"];
-                listaProductos = (List<Productoss>)Session["listaproducto"];
-                 Carro objCarrito = new Carro();
-                int aux = 0;
-
-                int idAux = int.Parse(IdProducto);
-
-                if (ProductoNegocio.getInstance().ValidarStock(idAux, 1)==true)
+                if (Request.QueryString["idaux"] != null)
                 {
-                    foreach (Carro item2 in carrito)
+                    string idCategoria = Request.QueryString["idaux"].ToString();
+                    idCategoriaAux = int.Parse(idCategoria);
+                }
+
+                if (Request.QueryString["Id"] != null)
+                {
+                    string IdProducto = Request.QueryString["Id"].ToString();
+                    carrito = (List<Carro>)Session["carrito"];
+                    listaProductos = (List<Productoss>)Session["listaproducto"];
+                    Carro objCarrito = new Carro();
+                    int aux = 0;
+
+                    int idAux = int.Parse(IdProducto);
+
+                    if (ProductoNegocio.getInstance().ValidarStock(idAux, 1) == true)
                     {
-
-                        if (int.Parse(IdProducto) == item2.Producto.IdProducto)
+                        foreach (Carro item2 in carrito)
                         {
-
-                            item2.Cantidad++;
-                            aux = 1;
-                            bool ok = ProductoNegocio.getInstance().BajaStock(idAux);
-                        }
-                    }
-
-                    if (aux == 0)
-                    {
-                        foreach (Productoss item in listaProductos)
-                        {
-
-
-                            if (item.IdProducto == int.Parse(IdProducto))
+                            if (int.Parse(IdProducto) == item2.Producto.IdProducto)
                             {
-
-
-                                objCarrito.Producto = new Productoss();
-                                objCarrito.Producto = item;
-                                objCarrito.Cantidad = 1;
-                                objCarrito.IdCarro = 1;
-
+                                item2.Cantidad++;
+                                aux = 1;
                                 bool ok = ProductoNegocio.getInstance().BajaStock(idAux);
                             }
                         }
-                        carrito.Add(objCarrito);
+
+                        if (aux == 0)
+                        {
+                            foreach (Productoss item in listaProductos)
+                            {
+                                if (item.IdProducto == int.Parse(IdProducto))
+                                {
+                                    objCarrito.Producto = new Productoss();
+                                    objCarrito.Producto = item;
+                                    objCarrito.Cantidad = 1;
+                                    objCarrito.IdCarro = 1;
+
+                                    bool ok = ProductoNegocio.getInstance().BajaStock(idAux);
+                                }
+                            }
+                            carrito.Add(objCarrito);
+                        }
+
+                        Session.Add("carrito", carrito);
+                        Response.Redirect("Productos.aspx");
                     }
-
-
-
-                    Session.Add("carrito", carrito);
-                    Response.Redirect("Productos.aspx");
+                    else
+                    {
+                        Response.Redirect("errorStock.aspx");
+                    }
                 }
-                else
-                {
-                    Response.Redirect("errorStock.aspx");
-                }
-
-                
-
-               
-
-                
-
             }
-
-
-
         }
     }
 }

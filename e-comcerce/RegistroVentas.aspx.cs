@@ -14,7 +14,16 @@ namespace e_comcerce
         public List<Ventas> listaVentas = new List<Ventas>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            listaVentas = VentaNegocio.getInstance().ListaVentas();
+            if (Session["usuario"] == null ||
+               ((CapaDominio.Usuario)Session["usuario"]).TipoUsuario != CapaDominio.TipoUsuario.ADMIN)
+            {
+                Session.Add("error", "Debes loguearte para ingresar y/o tener los permisos adecuados para ingresar a esta pagina.");
+                Response.Redirect("ErrorPermisos.aspx", false);
+            }
+            else
+            {
+                listaVentas = VentaNegocio.getInstance().ListaVentas();
+            }            
         }
     }
 }
