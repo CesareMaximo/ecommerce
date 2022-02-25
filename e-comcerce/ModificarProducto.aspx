@@ -13,9 +13,9 @@
             <img src="<%: objProducto.UrlImagen  %>" alt="Alternate Text" width="100%" />
             <p class="card-text">¿Desea modificar este producto?</p>
            <asp:DropDownList ID="ddlCategoria" runat="server"></asp:DropDownList>
-            <asp:TextBox ID="txtDescripcion" runat="server">  </asp:TextBox>
-            <asp:TextBox ID="txtStock" runat="server"></asp:TextBox>
-            <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDescripcion" TextMode="SingleLine" runat="server">  </asp:TextBox>
+            <asp:TextBox ID="txtStock" TextMode="Number" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPrecio" TextMode="Number" runat="server"></asp:TextBox>
             <asp:TextBox ID="txtURL" runat="server"></asp:TextBox>
             <asp:Button ID="btnAceptar" onclick="btnAceptar_Click" class="btn btn-success" runat="server" Text="Aceptar" />
             <asp:Button ID="btnCancelar" OnClick="btnCancelar_Click" class="btn btn-danger" runat="server" Text="Cancelar" />

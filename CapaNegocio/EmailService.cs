@@ -42,10 +42,10 @@ namespace CapaNegocio
                 "<hr/>" +
                 "<h2>¡Hola " + objUsuario.Apellido+ " "+ objUsuario.Nombre + ", gracias por tu compra! </h2>" +
                 "<h4>DETALLE DEL PEDIDO</h4>" +
-                   "Fecha de la compra" + objVenta.FechaVenta + "<br/>" +
+                   "Fecha de la compra: " + objVenta.FechaVenta + "<br/>" +
                  "Total: $" + objVenta.Total + "<br/>" +
-                  "Su direccion donde llegará el pedido(si corresponde)" + objVenta.DireccionEnvio + "<br/>" +
-                " Podes ver todos los detalles de esta compra, ingresando al e-comerce y haciendo click en el boton Mis Compras. <br/> <br/>" +
+                  "Su direccion donde llegará el pedido (si corresponde): " + objVenta.DireccionEnvio + "<br/>" +
+                " Podes ver todos los detalles de esta compra, ingresando al e-commerce, haciendo click en el boton Mis Compras y busca el numero "+ idVenta+ ". <br/> <br/>" +
                 " <img src=\"https://vilmanunez.com/wp-content/uploads/2018/06/tiendas-online.png\" width =\"200\" > ";
 
 

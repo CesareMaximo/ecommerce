@@ -10,21 +10,21 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Descripcion</label>
-            <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDescripcion" CssClass="form-control" TextMode="SingleLine" runat="server"></asp:TextBox>
         </div>
         <div class="mb-3">
             <label class="form-label">Stock</label>
-            <asp:TextBox ID="txtStock" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtStock" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Precio</label>
-            <asp:TextBox ID="txtPrecio" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPrecio" CssClass="form-control" TextMode="Number" runat="server"></asp:TextBox>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Ponga aqui el url de la imagen</label>
-            <asp:TextBox ID="txtURL" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtURL" CssClass="form-control"  runat="server"></asp:TextBox>
         </div>
 
 

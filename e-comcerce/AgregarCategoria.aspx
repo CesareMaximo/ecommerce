@@ -5,7 +5,7 @@
 
     <div class="mb-3">
             <label class="form-label">Descripcion</label>
-            <asp:TextBox ID="txtDescripcion" CssClass="form-control" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDescripcion" TextMode="SingleLine" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
 
     <asp:Button ID="btnAceptar" OnClick="btnAceptar_Click" CssClass="btn btn-success" runat="server" Text="Aceptar" />
