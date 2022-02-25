@@ -12,7 +12,7 @@
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <form class="form-signin">
                         <div class="form-group col-md-10 text-center">
-                            <h2 class="form-signin-heading">Modificar Cuenta</h2>                        
+                            <h2 class="form-signin-heading">Modificar Password</h2>                        
                         </div>                                                        
                         
                         <div class="form-group col-md-8 col-md-offset-2 text-center">

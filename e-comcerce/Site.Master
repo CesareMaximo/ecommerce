@@ -111,12 +111,7 @@
                             {%>
                         <li><a runat="server" href="~/Carrito">Carrito 🛒 </a></li>
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
-                        <% } %>
-                        
-                        <% if (EsUsuarioAdministrador())
-                            {%>
-                        <li><a runat="server" href="ListadoCompradores.aspx">Listado </a></li>
-                        <% } %>
+                        <% } %>                                                
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil <span class="caret"></span></a>
