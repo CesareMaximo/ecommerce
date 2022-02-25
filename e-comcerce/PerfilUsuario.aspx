@@ -18,17 +18,17 @@
                     <form class="form-signin">
                         <div class="form-group col-md-10 text-center">
                         <h2 class="form-signin-heading">Modificar Cuenta</h2>                        
-                            </div>
-                        
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="PerfilNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>                                       
+                        <div class="form-group col-md-8 col-md-offset-2 col-md-offset text-center">    
+                            
+                            <asp:TextBox ID="PerfilNombre" runat="server" CssClass="form-control"></asp:TextBox>                                     
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
+                        <div class="form-group col-md-8 col-md-offset-2 text-center">                            
                             <asp:TextBox ID="PerfilApellido" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
+                        <div class="form-group col-md-8 col-md-offset-2 text-center">                            
                             <asp:TextBox ID="PerfilDNI" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>                           
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
+                        <div class="form-group col-md-8 col-md-offset-2 text-center">                            
                             <asp:TextBox ID="PerfilDomicilio" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
+                        <div class="form-group col-md-8 col-md-offset-2 text-center">                            
                             <asp:TextBox ID="PerfilCelular" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
@@ -60,30 +60,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
+                        <div class="form-group col-md-8 col-md-offset-2 text-center">                            
                             <asp:TextBox ID="PerfilEmail" runat="server" CssClass="form-control" TextMode="Email" ReadOnly="true"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
-                        </div>
-                        <%--<div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterPassword" runat="server" CssClass="form-control" placeholder="Ingrese password..." TextMode="Password"></asp:TextBox>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterRePassword" runat="server" CssClass="form-control" placeholder="Confirme password..." TextMode="Password"></asp:TextBox>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>          --%>              
+                        </div>                                     
 
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
                             <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-success btn-block" OnClientClick="return ConfirmarModificacion();" OnClick="BtnGuardar_Click"/>

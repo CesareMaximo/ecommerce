@@ -266,6 +266,43 @@ namespace CapaDAO
             return ok;
         }
 
+        public bool ActualizarPasswordUsuario(Usuario objUsuario)
+        {
+            bool ok = false;
+            SqlConnection conexion = null;
+            SqlCommand cmd = null;
+            try
+            {
+                conexion = Conexion.getInstance().ConexionBD();
+                cmd = new SqlCommand("SP_ActualizarPasswordUsuario", conexion);
+
+                cmd.Parameters.AddWithValue("@prmUsuario", objUsuario.Email);
+                cmd.Parameters.AddWithValue("@prmClave", objUsuario.Clave);
+                cmd.Parameters.AddWithValue("@prmNombre", objUsuario.Nombre);                
+                cmd.Parameters.AddWithValue("@prmApellido", objUsuario.Apellido);
+                cmd.Parameters.AddWithValue("@prmDocumento", objUsuario.Documento);
+                cmd.Parameters.AddWithValue("@prmDomicilio", objUsuario.Domicilio);
+                cmd.Parameters.AddWithValue("@prmCelular", objUsuario.Celular);
+                cmd.Parameters.AddWithValue("@prmPatron", Patron);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+
+                int filas = cmd.ExecuteNonQuery();
+                if (filas > 0) ok = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+            return ok;
+        }
+
         public bool EliminarUsuario(string email)
         {
             SqlConnection conexion = null;

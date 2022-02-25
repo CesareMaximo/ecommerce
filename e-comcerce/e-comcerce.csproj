@@ -108,6 +108,7 @@
     <Content Include="AgregarAdmin.aspx" />
     <Content Include="AgregarCategoria.aspx" />
     <Content Include="AltaAdmin.aspx" />
+    <Content Include="CambiarPassword.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CategoriaAdmin.aspx" />
     <Content Include="CategoriaDeBaja.aspx" />
@@ -236,6 +237,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CambiarPassword.aspx.cs">
+      <DependentUpon>CambiarPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CambiarPassword.aspx.designer.cs">
+      <DependentUpon>CambiarPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Carrito.aspx.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
