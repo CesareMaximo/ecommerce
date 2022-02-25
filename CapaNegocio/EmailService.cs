@@ -29,8 +29,6 @@ namespace CapaNegocio
             objVenta = VentaNegocio.getInstance().VentaxID(idVenta);
             Usuario objUsuario = new Usuario();
             objUsuario = UsuarioNegocio.getInstance().UsuarioxID(objVenta.IdUsuario);
-            List<DetalleVenta> listaDetalle = new List<DetalleVenta>();
-            listaDetalle = DetalleVentaNegocio.getInstance().ListaDetalleVenta(idVenta);
 
             email = new MailMessage();
             email.From = new MailAddress("noresponder@tiendaberreta.com");
@@ -52,7 +50,39 @@ namespace CapaNegocio
 
 
         }
+        public void correoContacto(Contacto objContacto)
+        {
+            Usuario objusuario = new Usuario();
+            objusuario = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(objContacto.Email);
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@tiendaberreta.com");
+            email.To.Add(objContacto.Email);
 
+            email.Subject = "CONTACTO TIENDABERRETA.COM" ;
+            email.IsBodyHtml = true;
+            email.Body = "<h1>¡Hola " + objusuario.Nombre +  ", hemos recibido su reclamo! </h1>" +
+                "<hr/>" +
+                "<h2>En las proximas 24 horas se contactaran contigo a travez de WhatsApp por el numero: "+ objContacto.Celular + "</h2>" +
+                "<h4>SU RECLAMO: </h4>" +
+                   ""+objContacto.DescripcionProblema +" ";
+
+        }
+        public void correoCambioPass(Usuario objUsuario)
+        {
+           
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@tiendaberreta.com");
+            email.To.Add(objUsuario.Email);
+
+            email.Subject = "SU CONTRASEÑA FUE CAMBIADA EXITOSAMENTE";
+            email.IsBodyHtml = true;
+            email.Body = "<h1>¡Hola " + objUsuario.Apellido+" "+ objUsuario.Nombre + ", su contraseña a sido cambiada! </h1>" +
+                "<hr/>" +
+                "<h2>Si usted no cambió su contraseña recientemente, por favor comuniquese a este mail con todos sus datos: tiendaberreta@gmail.com </h2>" +
+                "<h4>Ningun representante va a pedir su email y contraseña, por favor no pasar su usuario a personas desconocidas  </h4>" +
+                   " ";
+
+        }
         public void EnviarEmail()
         {
             try

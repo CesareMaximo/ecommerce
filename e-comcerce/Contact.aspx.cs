@@ -25,7 +25,9 @@ namespace e_comcerce
             objContacto.DescripcionProblema = txtDescripcion.Text;
 
             bool ok = ContactoNegocio.getInstance().RegistrarConsulta(objContacto);
-
+            EmailService objEmail = new EmailService();
+            objEmail.correoContacto(objContacto);
+            objEmail.EnviarEmail();
             if (ok == true)
             {
                 Response.Redirect("Productos.aspx");

@@ -61,6 +61,9 @@ namespace e_comcerce
                     {
                         Response.Write("<script language=javascript>alert('Password Modificada Correctamente.')</script>");
                         Response.Redirect("Logout.aspx", false);
+                        EmailService objEmail = new EmailService();
+                        objEmail.correoCambioPass(usuarioAGuardar);
+                        objEmail.EnviarEmail();
                     }
                     else
                     {
