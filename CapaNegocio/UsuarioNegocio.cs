@@ -101,6 +101,18 @@ namespace CapaNegocio
             }
         }
 
+        public bool ActualizarPasswordUsuario(Usuario objUsuario)
+        {
+            try
+            {
+                return UsuarioDAO.getInstance().ActualizarPasswordUsuario(objUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public bool EliminarUsuario(string email)
         {
             try

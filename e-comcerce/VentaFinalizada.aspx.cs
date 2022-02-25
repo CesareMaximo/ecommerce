@@ -38,7 +38,7 @@ namespace e_comcerce
 
                 ID_Venta = DetalleVentaNegocio.getInstance().UltimoIdVenta();
 
-                CapaNegocio.EmailService email = new CapaNegocio.EmailService();
+                EmailService email = new EmailService();
                 email.armarCorreoVenta(ID_Venta);
                 email.EnviarEmail();
             }            

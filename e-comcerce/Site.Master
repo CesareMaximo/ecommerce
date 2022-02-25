@@ -128,7 +128,7 @@
                                 <li><a href="MisCompras.aspx" runat="server"><i class="glyphicon glyphicon-shopping-cart"></i><span id="idCompra">Ver Mis compras</span></a></li>
                                 <% } %>
 
-                                <li><a href="#" runat="server"><i class="glyphicon glyphicon-lock"></i><span id="idProfilePassword">Cambiar Contraseña</span></a></li>
+                                <li><a href="CambiarPassword.aspx" runat="server"><i class="glyphicon glyphicon-lock"></i><span id="idProfilePassword">Cambiar Contraseña</span></a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#" runat="server"><i class="glyphicon glyphicon-eye-close"></i><span id="idClose">Cerrar Sesion</span></a></li>
                             </ul>

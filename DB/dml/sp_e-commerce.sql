@@ -517,6 +517,45 @@ AS
 	END
 GO
 
+
+/****** Object:  StoredProcedure SP_ActualizarPasswordUsuario ******/      
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE SP_ActualizarPasswordUsuario
+(@prmUsuario VARCHAR(50),
+@prmClave VARCHAR(50),
+@prmNombre varchar(100),
+@prmApellido varchar(100),
+@prmDocumento varchar(8),
+@prmDomicilio varchar(150),
+@prmCelular varchar(20),
+@prmPatron VARCHAR(50))
+AS
+	BEGIN
+		BEGIN TRANSACTION
+		 SAVE TRANSACTION ActualizarPasswordUsuario;
+			DECLARE @IdUsuario AS BIGINT
+
+			SELECT @IdUsuario = IdUsuario FROM Usuarios WHERE Usuario = @prmUsuario;
+
+			BEGIN TRY
+				UPDATE Usuarios
+				SET 		
+				Usuarios.Clave = ENCRYPTBYPASSPHRASE(@prmPatron, @prmClave)						
+				WHERE Usuarios.IdUsuario = @IdUsuario	
+			COMMIT TRANSACTION 
+			END TRY
+			BEGIN CATCH
+				IF @@TRANCOUNT > 0
+				BEGIN
+					ROLLBACK TRANSACTION ActualizarPasswordUsuario; -- rollback de ActualizarPasswordUsuario
+				END
+			END CATCH
+	END
+GO
+
 create PROCEDURE SP_ListarUsuarioXid
 (
 	@idUsuario bigint
