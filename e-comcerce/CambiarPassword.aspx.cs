@@ -42,39 +42,40 @@ namespace e_comcerce
             else 
             {
                 string email = Session["userName"].ToString();
-                Usuario usuarioAGuardar = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(email);                
+                Usuario usuarioAGuardar = UsuarioNegocio.getInstance().AccesoSistema(email, RegisterCurrentPassword.Text);                
 
-                if (usuarioAGuardar.Clave.Equals(RegisterCurrentPassword.Text))
+                if (usuarioAGuardar == null) //Valida si la constrania RegisterCurrentPassword.Text es la misma a la que tiene guarda actualmente.
                 {
-                    Response.Write("<script language=javascript>alert('El password actual no es correcto.')</script>");                    
+                    Response.Write("<script language=javascript>alert('El password actual no es correcto.')</script>");
+                    Response.Redirect("CambiarPassword.aspx", false);
                 }
-                else if (RegisterPassword.Equals(RegisterRePassword.Text))
+                else if (!(RegisterPassword.Text.Equals(RegisterRePassword.Text)))
                 {
-                    Response.Write("<script language=javascript>alert('El nuevo password no coincide con el password confirmado.')</script>");                    
+                    Response.Write("<script language=javascript>alert('El nuevo password no coincide con el password confirmado.')</script>");
+                    Response.Redirect("CambiarPassword.aspx", false);
                 }
                 else
                 {
+                    usuarioAGuardar = UsuarioNegocio.getInstance().BuscarUsuarioPorEmail(email);
                     usuarioAGuardar.Clave = RegisterPassword.Text;
                     bool passwordModificado = UsuarioNegocio.getInstance().ActualizarPasswordUsuario(usuarioAGuardar);
 
                     if (passwordModificado)
                     {
                         Response.Write("<script language=javascript>alert('Password Modificada Correctamente.')</script>");
-                        Response.Redirect("Logout.aspx", false);
+                        //Response.Redirect("Logout.aspx", false);
                         EmailService objEmail = new EmailService();
                         objEmail.correoCambioPass(usuarioAGuardar);
                         objEmail.EnviarEmail();
+                        CerrarSession();
                     }
                     else
                     {
                         Response.Write("<script language=javascript>alert('Password No Modificada.')</script>");
-                    }
-                    Response.Redirect("Default.aspx", false);
+                        Response.Redirect("Default.aspx", false);
+                    }                   
                 }
-            }
-
-            Response.Redirect("CambiarPassword.aspx", false);
-
+            }            
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
@@ -88,6 +89,13 @@ namespace e_comcerce
             RegisterCurrentPassword.Text = "";
             RegisterPassword.Text = "";
             RegisterRePassword.Text = "";            
+        }
+
+        public void CerrarSession()
+        {
+            HttpContext.Current.Session.Clear();
+            HttpContext.Current.Session.Abandon();
+            Response.Redirect("Login.aspx", false);
         }
     }
 }
