@@ -23,6 +23,7 @@
                     <h3>Acceso Denegado</h3>
                     <p>Disculpe, Usted no tiene los permisos adecuados para ingresar a esta pagina<br/>Por favor, intente iniciar sesion nuevamente con los permisos adecuados.</p>
                     <a class="btn btn-danger" href="javascript:history.back()">Retornar a Iniciar Sesion</a>
+
                </div>
           </div>
      </div>

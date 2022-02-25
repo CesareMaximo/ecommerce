@@ -3,6 +3,26 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
+    <style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
 
 
 
@@ -47,7 +67,7 @@
     </div>
 
     <div>
-        <asp:DropDownList ID="dropFormaPago" runat="server"></asp:DropDownList>
+        <asp:DropDownList  ID="dropFormaPago" runat="server"></asp:DropDownList>
 
 
     </div>
@@ -57,12 +77,12 @@
     <form>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Dirección de entrega (si es necesario)</label>
-            <asp:TextBox ID="txtDireccionEnvio" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDireccionEnvio" maxlength="150"  runat="server"></asp:TextBox>
         </div>
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Aclaración de sobre la compra: </label>
-            <asp:TextBox ID="txtAclaracion" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtAclaracion" maxlength="300"  runat="server"></asp:TextBox>
         </div>
 
         </form>

@@ -11,7 +11,7 @@
     <hr />
 
     <div class="jumbotron">
-        <h1>Tenés algún problema? contacta con nostros!</h1>
+        <h1>Tenés algún problema? contacta con nosotros!</h1>
         
         <p><a href="<%: contacto %>" class="btn btn-primary btn-lg">Hace click Acá! &raquo;</a></p>
         <img src="https://assets-global.website-files.com/5f4f67c5950db17954dd4f52/5f5b74f79bd6983b85d41918_06_CONTACTO_VIVUS.jpeg" class="d-block w-100" width="1000px" alt="...">

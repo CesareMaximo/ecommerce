@@ -36,5 +36,55 @@ namespace CapaNegocio
             }
         }
 
+        public List<FormaPago> listarFormaPagoGeneral()
+        {
+            try
+            {
+                return FormaPagoDAO.getInstance().listarformapagoGeneral();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public bool EliminarFormaPago(int idFP)
+        {
+            try
+            {
+                return FormaPagoDAO.getInstance().EliminarFormaPago(idFP);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool AltaFormaPago(int idFP)
+        {
+            try
+            {
+                return FormaPagoDAO.getInstance().AltaFormaPago(idFP);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public bool RegistrarFormaPago(string Descripcion)
+        {
+            try
+            {
+                return FormaPagoDAO.getInstance().RegistrarFormaPago(Descripcion);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
     }
 }

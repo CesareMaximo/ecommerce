@@ -30,7 +30,7 @@ namespace e_comcerce
             objEmail.EnviarEmail();
             if (ok == true)
             {
-                Response.Redirect("Productos.aspx");
+                Response.Redirect("Default.aspx");
             }
 
         }

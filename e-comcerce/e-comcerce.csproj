@@ -104,10 +104,12 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AdminClientes.aspx" />
+    <Content Include="AdminFormaPago.aspx" />
     <Content Include="Administradores.aspx" />
     <Content Include="AgregarAdmin.aspx" />
     <Content Include="AgregarCategoria.aspx" />
     <Content Include="AltaAdmin.aspx" />
+    <Content Include="AltaFormaPago.aspx" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="CategoriaAdmin.aspx" />
@@ -126,6 +128,7 @@
     <Content Include="DetalleVentaRegistro.aspx" />
     <Content Include="EliminarAdmin.aspx" />
     <Content Include="EliminarCategoria.aspx" />
+    <Content Include="EliminarFormaPago.aspx" />
     <Content Include="EliminarProducto.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="ErrorLogin.aspx" />
@@ -153,6 +156,7 @@
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="Productos.aspx" />
     <Content Include="ProductosAdmin.aspx" />
+    <Content Include="RegistrarFormaPago.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="RegistroProducto.aspx" />
     <Content Include="RegistroVentas.aspx" />
@@ -200,6 +204,13 @@
     <Compile Include="AdminClientes.aspx.designer.cs">
       <DependentUpon>AdminClientes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminFormaPago.aspx.cs">
+      <DependentUpon>AdminFormaPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminFormaPago.aspx.designer.cs">
+      <DependentUpon>AdminFormaPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administradores.aspx.cs">
       <DependentUpon>Administradores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +238,13 @@
     </Compile>
     <Compile Include="AltaAdmin.aspx.designer.cs">
       <DependentUpon>AltaAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaFormaPago.aspx.cs">
+      <DependentUpon>AltaFormaPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaFormaPago.aspx.designer.cs">
+      <DependentUpon>AltaFormaPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -327,6 +345,13 @@
     </Compile>
     <Compile Include="EliminarCategoria.aspx.designer.cs">
       <DependentUpon>EliminarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarFormaPago.aspx.cs">
+      <DependentUpon>EliminarFormaPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarFormaPago.aspx.designer.cs">
+      <DependentUpon>EliminarFormaPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="EliminarProducto.aspx.cs">
       <DependentUpon>EliminarProducto.aspx</DependentUpon>
@@ -437,6 +462,13 @@
       <DependentUpon>ProductosAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarFormaPago.aspx.cs">
+      <DependentUpon>RegistrarFormaPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarFormaPago.aspx.designer.cs">
+      <DependentUpon>RegistrarFormaPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -123,15 +123,68 @@ END
 -- ///////////////// TERMINA PRODUCTOS /////////////////////////////--
 GO
 --/////////////// EMPIEZA FORMA DE PAGO ////////////////////////////-
-CREATE PROCEDURE SP_ListaFormaPago
+create PROCEDURE SP_ListaFormaPago
 AS
 BEGIN
 
 SELECT IdFormaPago,
-	   Descripcion
-FROM FormaPago WHERE Estado = 1
+	   Descripcion,
+	   Estado
+	   
+FROM FormaPago WHERE Estado =1 
 END
+
+
 GO
+create PROCEDURE SP_ListaFormaPagoGeneral
+AS
+BEGIN
+
+SELECT IdFormaPago,
+	   Descripcion,
+	   Estado
+	   
+FROM FormaPago 
+END
+
+
+
+GO
+create PROCEDURE SP_EliminarFormaPago
+(
+	@idFP bigint
+)
+AS
+BEGIN
+
+UPDATE FormaPago set Estado =0 where IdFormaPago = @idFP
+
+END
+
+go
+create procedure SP_AltaFormaPago
+(
+	@idFP bigint
+)
+AS
+BEGIN
+UPDATE FormaPago set Estado =1 where IdFormaPago = @idFP
+
+end
+
+go
+create procedure SP_RegistrarFormaPago
+(
+	@Descripcion varchar(30)
+)
+AS
+BEGIN
+
+INSERT into FormaPago (Descripcion,Estado)
+VALUES (@Descripcion,1)
+
+END
+
 --//////////////// TERMINA FORMA DE PAGO/////////////////-
 
 --///////////////////// EMPIEZA VENTA /////////////////////////

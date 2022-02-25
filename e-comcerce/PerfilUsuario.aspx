@@ -21,7 +21,7 @@
                             </div>                                       
                         <div class="form-group col-md-8 col-md-offset-2 col-md-offset text-center">    
                             
-                            <asp:TextBox ID="PerfilNombre" runat="server" CssClass="form-control"></asp:TextBox>                                     
+                            <asp:TextBox ID="PerfilNombre" runat="server" maxlength="100"   CssClass="form-control"></asp:TextBox>                                     
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">                            
-                            <asp:TextBox ID="PerfilApellido" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
+                            <asp:TextBox ID="PerfilApellido" runat="server" maxlength="100" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">                            
-                            <asp:TextBox ID="PerfilDNI" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>                           
+                            <asp:TextBox ID="PerfilDNI" runat="server" min="1"  CssClass="form-control" TextMode="Number"></asp:TextBox>                           
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">                            
-                            <asp:TextBox ID="PerfilDomicilio" runat="server" CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
+                            <asp:TextBox ID="PerfilDomicilio" runat="server" maxlength="150"  CssClass="form-control" TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">                            
-                            <asp:TextBox ID="PerfilCelular" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                            <asp:TextBox ID="PerfilCelular" runat="server" min="1"   CssClass="form-control" TextMode="Number"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>

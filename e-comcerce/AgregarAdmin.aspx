@@ -13,7 +13,7 @@
                             </div>
                         
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterNombre" runat="server" CssClass="form-control" Style="align: center" placeholder="Ingrese nombre..."></asp:TextBox>
+                            <asp:TextBox ID="RegisterNombre" runat="server" CssClass="form-control" maxlength="100"   Style="align: center" placeholder="Ingrese nombre..."></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterApellido" runat="server" CssClass="form-control" placeholder="Ingrese apellido..." TextMode="SingleLine"></asp:TextBox>
+                            <asp:TextBox ID="RegisterApellido" runat="server" CssClass="form-control" maxlength="100"  placeholder="Ingrese apellido..." TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterDNI" runat="server" CssClass="form-control" placeholder="Ingrese DNI..." TextMode="Number"></asp:TextBox>                           
+                            <asp:TextBox ID="RegisterDNI" runat="server" CssClass="form-control"  min="1"  placeholder="Ingrese DNI..." TextMode="Number"></asp:TextBox>                           
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterDomicilio" runat="server" CssClass="form-control" placeholder="Ingrese Domicilio..." TextMode="SingleLine"></asp:TextBox>
+                            <asp:TextBox ID="RegisterDomicilio" runat="server" CssClass="form-control" maxlength="150"  placeholder="Ingrese Domicilio..." TextMode="SingleLine"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterCelular" runat="server" CssClass="form-control" placeholder="Ingrese Celular..." TextMode="Number"></asp:TextBox>
+                            <asp:TextBox ID="RegisterCelular" runat="server" CssClass="form-control"  min="1"   placeholder="Ingrese Celular..." TextMode="Number"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-user"></span>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterPassword" runat="server" CssClass="form-control" placeholder="Ingrese password..." TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="RegisterPassword" runat="server" CssClass="form-control"  placeholder="Ingrese password..." TextMode="Password"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="form-group col-md-8 col-md-offset-2 text-center">
-                            <asp:TextBox ID="RegisterRePassword" runat="server" CssClass="form-control" placeholder="Confirme password..." TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="RegisterRePassword" runat="server" CssClass="form-control"  placeholder="Confirme password..." TextMode="Password"></asp:TextBox>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>

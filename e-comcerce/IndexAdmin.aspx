@@ -98,6 +98,19 @@
     </div>
         </tr>
 
+       <tr>
+        <div class="card" width="100%" style="border-radius:20px; width: 18rem;border: solid 1px black; padding: 10px; margin: 15px;  ">
+        <img style="border-radius: 20px;" src="https://www.verines.com/images/tipos_de_pago.jpg" class="card-img-top" alt="..."  width="158" height="158"  >
+        <div class="card-body">
+            <h5 class="card-title">Forma de Pago</h5>
+            <hr />
+            <p class="card-text"> Aqui podrá ver las formas de pago, eliminarlas o insertar una nueva</p>
+           
+            <a href="AdminFormaPago.aspx"  style="border-radius:20px;" class="btn btn-success">Click Acá!</a>
+        </div>
+    </div>
+        </tr>
+
 
         </div>
 
