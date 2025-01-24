@@ -40,7 +40,7 @@ namespace e_comcerce
 
                 EmailService email = new EmailService();
                 email.armarCorreoVenta(ID_Venta);
-                email.EnviarEmail();
+               // email.EnviarEmail();
             }            
         }
     }
